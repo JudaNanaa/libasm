@@ -10,12 +10,17 @@
 section .text
     global ft_strlen
 
-ft_strlen: 
+ft_strlen:
+	push rbp
+	mov rbp, rsp
+
     mov rax, 0 ; initialise la valeur de retour qui est aussi l'increment
 .loop:
     cmp byte [rdi + rax], 0 ; regarde si debut de string + incr == \0
-    je end
+    je .end
     inc rax ; incremente la len
     jmp .loop
-end:
+.end:
+	mov rsp, rbp
+	pop rbp
     ret

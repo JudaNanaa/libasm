@@ -14,6 +14,9 @@ section .text
 	extern ft_strcpy
 
 ft_strdup:
+	push rbp
+	mov rbp, rsp
+
 	call ft_strlen
 	push rdi
 	inc rax
@@ -26,4 +29,6 @@ ft_strdup:
 	call ft_strcpy
 
 .done:
+	mov rsp, rbp
+	pop rbp
 	ret

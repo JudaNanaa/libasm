@@ -37,5 +37,6 @@ ft_list_push_front:
 .done:
 	pop r12
 	pop rbx
+	mov rsp, rbp
 	pop rbp
 	ret

@@ -57,5 +57,6 @@ ft_list_sort:
 	pop r13
 	pop r12
 	pop rbx
+	mov rsp, rbp
 	pop rbp
 	ret

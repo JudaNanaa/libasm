@@ -28,5 +28,6 @@ ft_create_elem:
 
 .done:
 	pop rbx
+	mov rsp, rbp
 	pop rbp
 	ret

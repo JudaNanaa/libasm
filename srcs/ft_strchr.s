@@ -26,5 +26,6 @@ ft_strchr:
     jmp .done
 
 .done:
+	mov rsp, rbp
 	pop rbp
     ret

@@ -11,6 +11,8 @@ section .text
     global ft_strcmp
 
 ft_strcmp:
+	push rbp
+	mov rbp, rsp
 	mov rcx, 0
 
 .loop:
@@ -32,14 +34,19 @@ ft_strcmp:
 	sub rax, [rsi]
 	cmp rax, 0
 	jne .less 
-	ret
+	jmp .done
 	
 .less:
 	cmp rax, 0
 	jg .greater
 	mov rax, -1
-	ret
+	jmp .done
 
 .greater:
 	mov rax, 1
+	jmp .done
+
+.done:
+	mov rsp, rbp
+	pop rbp
 	ret

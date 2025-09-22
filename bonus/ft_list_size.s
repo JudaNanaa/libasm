@@ -23,5 +23,6 @@ ft_list_size:
 	jmp .loop
 
 .done:
+	mov rsp, rbp
 	pop rbp
 	ret

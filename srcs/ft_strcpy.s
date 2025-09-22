@@ -11,6 +11,9 @@ section .text
     global ft_strcpy
 
 ft_strcpy:
+	push rbp
+	mov rbp, rsp
+
     mov rax, rdi        ; sauvegarder dest pour retour
 	mov rcx, 0
 
@@ -21,4 +24,7 @@ ft_strcpy:
     cmp dl, 0         ; était-ce un 0 ?
     jne .loop
 
-    ret
+.done:
+	mov rsp, rbp
+	pop rbp
+	ret

@@ -85,5 +85,6 @@ ft_list_remove_if:
 	pop r13
 	pop r12
 	pop rbx
+	mov rsp, rbp
 	pop rbp
 	ret

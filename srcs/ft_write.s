@@ -13,6 +13,8 @@ section .text
 
 ; ssize_t ft_write(int fd, const void *buf, size_t count)
 ft_write:
+	push rbp
+	mov rbp, rsp
     mov rax, 1          ; numéro du syscall write
     syscall             ; appel kernel
 
@@ -29,4 +31,6 @@ ft_write:
 
     mov rax, -1         ; valeur de retour standard en cas d’erreur
 .done:
+	mov rsp, rbp
+	pop rbp
     ret

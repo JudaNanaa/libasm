@@ -224,5 +224,6 @@ ft_atoi_base:
 	pop r14
 	pop r13
 	pop r12
+	mov rsp, rbp
 	pop rbp
     ret

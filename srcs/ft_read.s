@@ -12,6 +12,9 @@ section .text
     extern __errno_location
 
 ft_read:
+	push rbp
+	mov rbp, rsp
+
 	mov rax, 0
 	syscall
 
@@ -28,4 +31,6 @@ ft_read:
 
     mov rax, -1         ; valeur de retour standard en cas d’erreur
 .done:
+	mov rsp, rbp
+	pop rbp
     ret
