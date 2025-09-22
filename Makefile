@@ -11,7 +11,7 @@ SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s ft_s
 SRCS := $(addprefix $(SRCS_DIR), $(SRCS))
 OBJS = $(SRCS:$(SRCS_DIR)%.s=$(OBJS_DIR)%.o)
 
-SRCS_BONUS = ft_atoi_base.s
+SRCS_BONUS = ft_atoi_base.s ft_create_elem.s ft_list_push_front.s ft_list_size.s ft_list_sort.s ft_list_remove_if.s
 SRCS_BONUS := $(addprefix $(BONUS_DIR), $(SRCS_BONUS))
 OBJS_BONUS = $(SRCS_BONUS:$(BONUS_DIR)%.s=$(OBJS_DIR)%.o)
 
