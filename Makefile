@@ -15,28 +15,41 @@ SRCS_BONUS = ft_atoi_base.s ft_create_elem.s ft_list_push_front.s ft_list_size.s
 SRCS_BONUS := $(addprefix $(BONUS_DIR), $(SRCS_BONUS))
 OBJS_BONUS = $(SRCS_BONUS:$(BONUS_DIR)%.s=$(OBJS_DIR)%.o)
 
+# Colors
+BLUE=	$(shell tput -Txterm setaf 6)
+GREEN= 	$(shell tput -Txterm setaf 2)
+END= 	$(shell tput -Txterm sgr0)
+YELLOW=	$(shell tput -Txterm setaf 3)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+	@echo "$(BLUE)Compiling done$(END)"
+	@ar -rcs $(NAME) $(OBJS)
+	@echo "$(GREEN)Library created$(END)"
 
 bonus: all $(OBJS_BONUS)
-	ar -rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+	@echo "$(BLUE)Compiling done (bonus)$(END)"
+	@ar -rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+	@echo "$(GREEN)Library created$(END)"
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.s
 	@mkdir -p $(@D)
-	$(ASM) $(ASM_FLAGS) $< -o $@
+	@echo "$(YELLOW)Compiling $(notdir $<) ...$(END)"
+	@$(ASM) $(ASM_FLAGS) $< -o $@
 
 $(OBJS_DIR)%.o: $(BONUS_DIR)%.s
 	@mkdir -p $(@D)
-	$(ASM) $(ASM_FLAGS) $< -o $@
+	@echo "$(BLUE)Compiling $(notdir $<) ...$(END)"
+	@$(ASM) $(ASM_FLAGS) $< -o $@
 
 clean:
-	rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJS_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
-re: fclean bonus
+re: fclean all
 
 .PHONY: all bonus clean fclean re
+
